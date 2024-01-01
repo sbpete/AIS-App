@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'flex-start',
-    backgroundColor: colors.grey,
+    backgroundColor: colors.gray,
   },
   listBox: {
     height: '72%', 

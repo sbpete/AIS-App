@@ -1,9 +1,8 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet, ScrollView } from 'react-native';
-import { Overlay } from 'react-native-elements'
+import { View, StyleSheet, ScrollView } from 'react-native';
 //  my components
 import CompanyCard from '../components/CompanyCard';
-import MyButton from '../components/MyButton';
+import PopUp from '../components/PopUp'
 // linking
 import { openURL } from 'expo-linking';
 // data
@@ -54,11 +53,7 @@ const CompanyList = ({ filteredCompanies, typeOfData, defaultTitle }) => {
         ))
       }
       </ScrollView>
-      <Overlay overlayStyle={styles.popUp} isVisible={visible} onBackdropPress={toggleOverlay}>
-        {overlay.message && <Text style={styles.popUpText}>{overlay.message}</Text>}
-        {overlay.phone && <MyButton text='Call' onPress={() => openURL(`tel:${overlay.phone}`)} />}
-        {overlay.link && <MyButton text='Website' onPress={() => openURL(overlay.link)} />}
-      </Overlay>
+      <PopUp message={overlay.message} phone={overlay.phone} link={overlay.link} toggle={toggleOverlay} />
     </View>
   );
 }
@@ -70,7 +65,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   popUp: {
-    backgroundColor: colors.grey,
+    backgroundColor: colors.gray,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
