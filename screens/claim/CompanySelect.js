@@ -40,7 +40,7 @@ const CompanySelect = ({ route, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.grey,
+    backgroundColor: colors.gray,
   },
   title: {
     fontSize: 20,
