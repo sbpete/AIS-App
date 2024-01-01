@@ -2,6 +2,8 @@ import React from 'react';
 import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
 // my components
 import Header from '../components/Header';
+// styling
+import colors from '../styles/colors';
 
 // About Us screen
 const AboutUs = ({ navigation }) => {
@@ -31,7 +33,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: '#FAFAFA',
+    backgroundColor: colors.gray,
   },
   scrollStyle: {
     justifyContent: 'flex-start',

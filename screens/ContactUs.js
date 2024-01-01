@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'flex-start',
-    backgroundColor: colors.grey,
+    backgroundColor: colors.gray,
   },
   scrollStyle: {
     backgroundColor: colors.lightBlue, 
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
   },
   separator: {
     margin: 30, 
-    backgroundColor: '#CED0CE', 
+    backgroundColor: colors.darkGray, 
     height: 1, 
     width: '80%'
   },
