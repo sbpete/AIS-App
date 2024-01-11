@@ -23,7 +23,7 @@ const Header = ({ navigation }) => {
                 onPressOut={() => setDrawerPressed(false)}
             />
             <Image
-                source={require('../assets/AIS-logo-simple-invert.png')}
+                source={require('../assets/AIS-logo-simple-col.png')}
                 style={styles.logoStyle}
                 resizeMode="contain"
             />

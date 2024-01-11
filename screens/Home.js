@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, StyleSheet, FlatList } from 'react-native';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
 // my components
 import Header from '../components/Header';
 import Heading from '../components/Heading';
-import NavigationCard from '../componets/NavigationCard';
+import NavigationCard from '../components/NavigationCard';
+import FadeInView from '../components/FadeInView';
 // styling
 import { colors } from '../styles';
 
@@ -13,7 +14,7 @@ const Home = ({ navigation }) => {
   // Sample Data
   const itemData = [
     {
-      iconName: 'file',
+      iconName: 'file-text',
       iconType: 'feather',
       text: 'Make a Claim',
     },
@@ -28,7 +29,7 @@ const Home = ({ navigation }) => {
       text: 'Get ID Card',
     },
     {
-      iconName: 'user',
+      iconName: 'log-in',
       iconType: 'feather',
       text: 'Login To My Account',
     },
@@ -45,18 +46,22 @@ const Home = ({ navigation }) => {
   ];
 
   return (
-    <View style={styles.container}>
+    <FadeInView style={styles.container} navigation={navigation}>
       <Header navigation={navigation}/>
-      <Heading text='Home' iconName='home' iconType='feather' />
-      <View style={styles.containerView}> 
+      <Heading text='Home' iconName='home' iconType='feather' navigation={navigation}/> 
+      <FadeInView duration={1500} navigation={navigation}>
+        <Text style={styles.heading}>Welcome to AIS, how can we help?</Text>
+      </FadeInView>
+      <View style={styles.listContainer}>
         <FlatList
+          contentContainerStyle={styles.flatList}
           data={itemData}
           numColumns={2}
-          renderItem={() => <NavigationCard text={item.text} iconName={item.iconName} iconType={item.iconType} navigation={navigation} />}
+          renderItem={({item}) => <NavigationCard text={item.text} iconName={item.iconName} iconType={item.iconType} navigation={navigation} />}
           keyExtractor={(item) => item.text}
         />
       </View>
-    </View>
+    </FadeInView>
   );
 }
 
@@ -66,11 +71,23 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     backgroundColor: colors.gray,
   },
-  containerView: {
-    padding: 10,
-    paddingTop: 0,
-    margin: 10,
+  listContainer: {
+    alignItems: 'center',
+    flex: 1,
+    margin: 20,
+    marginBottom: 40,
+    borderRadius: 20,
     backgroundColor: colors.lightBlue,
+  },
+  flatList: {
+    alignItems: 'center',
+    marginVertical: 20,
+  },
+  heading: {
+    fontSize: 20,
+    color: colors.darkGray,
+    marginLeft: 20,
+    marginTop: -10,
   },
 });
 

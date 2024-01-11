@@ -1,8 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { Text, StyleSheet, Pressable } from 'react-native';
 import { Icon } from 'react-native-elements';
-// my components
-import NavigationCard from '../componets/NavigationCard';
 // styling
 import { colors } from '../styles';
 
@@ -13,12 +11,12 @@ const NavigationCard = ({ text, iconName, iconType, navigation }) => {
 
     return (
         <Pressable 
-        style={[styles.cardStyle, {backgroundColor: pressed ? colors.lightGray : colors.white}]} 
-        onPress={() => {navigation.navigate(text)}}
-        onPressIn={() => setPressed(true)}
-        onPressOut={() => setPressed(false)}
+          style={[styles.cardStyle, {backgroundColor: pressed ? colors.gray : colors.white}]} 
+          onPress={() => {navigation.navigate(text)}}
+          onPressIn={() => setPressed(true)}
+          onPressOut={() => setPressed(false)}
         >
-        <Icon name={iconName} type={iconType} color={colors.blue} size={pressed ? 45 : 50} />
+        <Icon name={iconName} type={iconType} color={colors.blue} size={pressed ? 40 : 45} />
         <Text style={[styles.itemText, {fontSize: pressed ? 15 : 16}]}>{text}</Text>
         </Pressable>
     );
@@ -28,11 +26,10 @@ const NavigationCard = ({ text, iconName, iconType, navigation }) => {
     cardStyle: {
       justifyContent: 'flex-end',
       alignItems: 'left',
-      width: '45%',
-      height: 150,
-      backgroundColor: colors.white,
-      padding: 20,
+      width: 140,
+      height: 130,
       margin: 10,
+      padding: 20,
       borderRadius: 20,
       shadowColor: colors.blue,
       shadowOffset: { width: 0, height: 2 },

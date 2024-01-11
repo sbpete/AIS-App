@@ -12,7 +12,7 @@ const MyButton = ({ text, onPress }) => {
             <Pressable
                 style={[styles.itemContainer, {
                     paddingHorizontal: pressed ? 25 : 30,
-                    backgroundColor: pressed ? colors.grey : colors.white,
+                    backgroundColor: pressed ? colors.gray : colors.white,
                 }]}
                 onPress={onPress}
                 onPressIn={() => setPressed(true)}

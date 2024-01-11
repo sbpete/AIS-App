@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 // my components
 import CompanyList from '../../components/CompanyList';
 import MyButton from '../../components/MyButton';
@@ -23,6 +23,7 @@ const CompanySelect = ({ route, navigation }) => {
   // Filter the companies based on the supported claim type
   const filteredCompanies = companies.filter(company => company.claimsSupported.includes(claimType));
   const formattedClaimType = claimType.charAt(0).toLowerCase() + claimType.slice(1).replaceAll(" ", "") + 'Data';
+  console.log(formattedClaimType);
 
   return (
     <View style={styles.container}>

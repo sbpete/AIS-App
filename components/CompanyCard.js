@@ -23,7 +23,10 @@ const CompanyCard = ({ company, data, defaultTitle, setOverlay }) => {
             : () => openURL(item.data);
 
             return (
-              <MyButton text={item.title ? item.title : defaultTitle} onPress={onPress} key={index} />
+              <View key={index}>
+                <View style={{marginTop: 20}} />
+                <MyButton text={item.title ? item.title : defaultTitle} onPress={onPress} />
+              </View>
           )})
         }
     </View>

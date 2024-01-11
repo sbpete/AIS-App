@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text } from 'react-native';
-import { Icon } from 'react-native-elements';
+import { StyleSheet, View } from 'react-native';
 // my components
 import ClaimSelect from './ClaimSelect';
 import CompanySelect from './CompanySelect';
 import Header from '../../components/Header';
 import Heading from "../../components/Heading";
+import FadeInView from '../../components/FadeInView';
 // navigation
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // progress bar
@@ -22,9 +22,9 @@ const Claim = ({ navigation }) => {
   const Stack = createNativeStackNavigator();
 
   return (
-    <View style={styles.container}>
+    <FadeInView style={styles.container} navigation={navigation}>
       <Header navigation={navigation}/>
-      <Heading text='Make a Claim' iconName='file' iconType='feather' />
+      <Heading text='Make a Claim' iconName='file' iconType='feather' navigation={navigation}/>
       {<View style={{paddingHorizontal: 20}}>
         <Progress.Bar progress={progress} width={null} borderWidth={0}/>
       </View>}
@@ -32,7 +32,7 @@ const Claim = ({ navigation }) => {
         <Stack.Screen name="Claim Select" component={ClaimSelect} initialParams={{setProgress: setProgress}}/>
         <Stack.Screen name="Company Select" component={CompanySelect} initialParams={{setProgress: setProgress}}/>
       </Stack.Navigator>
-    </View>
+    </FadeInView>
   );
 };
 

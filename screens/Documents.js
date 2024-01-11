@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button, SectionList, TextInput} from 'react-native';
+import { View, Text, StyleSheet, SectionList, TextInput} from 'react-native';
 // my components
 import Header from '../components/Header';
 import Heading from '../components/Heading';
 import MyButton from '../components/MyButton';
+import FadeInView from '../components/FadeInView';
 // linking
 import { openURL } from 'expo-linking';
 // data
@@ -32,9 +33,9 @@ const Documents = ({ navigation }) => {
   });
   
   return (
-    <View style={styles.container}>
+    <FadeInView style={styles.container} navigation={navigation}>
       <Header navigation={navigation}/>
-      <Heading text='Documents' iconName='folder' iconType='feather' />
+      <Heading text='Documents' iconName='folder' iconType='feather' navigation={navigation}/>
       <View style={{ alignItems: 'center'}}>
         <View style={styles.search} >
           <Icon name='search' type='feather' color={colors.blue} size={20} />
@@ -44,6 +45,10 @@ const Documents = ({ navigation }) => {
             onChangeText={setSearch}
           />
         </View>
+        <View style={styles.listStyle}>
+          <Text style={styles.headerText}>Coming soon!</Text>
+        </View>
+        {/*
         <SectionList
           style={styles.listStyle}
           sections={sectionedList}
@@ -52,11 +57,12 @@ const Documents = ({ navigation }) => {
           ItemSeparatorComponent={() => <View style={{height: 1, backgroundColor: colors.darkGray}} />}
           keyExtractor={(item, index) => item + index}
         />
+        */}
       </View>
       <View style={styles.buttonView}>
         <MyButton text='Send Document' onPress={() => openURL('mailto:info@ais-ins.net')} />
       </View>
-    </View>
+    </FadeInView>
   );
 }
 
@@ -101,6 +107,7 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 20,
     fontWeight: 'bold',
+    color: colors.darkGray,
   },
   text: {
     fontSize: 20,

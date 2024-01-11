@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "ais",
-    "slug": "ais",
-    "version": "1.0.0",
+    "name": "aisApp",
+    "slug": "aisApp",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/AIS-splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -15,9 +15,13 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "buildNumber": "1.0.1",
+      "supportsTablet": true,
+      "bundleIdentifier": "com.aisApp"
     },
     "android": {
+      "package": "com.aisApp",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -25,6 +29,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b0cde3b3-6d9a-4a97-9642-84cfbc968ed3"
+      }
     }
   }
 }

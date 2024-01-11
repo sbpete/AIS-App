@@ -2,7 +2,6 @@ import React from 'react';
 // my components
 import CompanyListScreen from '../components/CompanyListScreen';
 
-
 // Company Log In screen
 const CompanyLogin = ({ navigation }) => {
 
@@ -12,7 +11,7 @@ const CompanyLogin = ({ navigation }) => {
       icon = 'log-in'
       iconType='feather'
       typeOfData='loginData' 
-      defaultTitle='Login'
+      defaultTitle='Log in'
       navigation={navigation}
     />
   );

@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 // my components
 import Header from '../components/Header';
 import Heading from '../components/Heading';
 import MyButton from '../components/MyButton';
+import FadeInView from '../components/FadeInView';
 // linking
 import { openURL } from 'expo-linking';
 // data
@@ -15,19 +16,18 @@ import { colors } from '../styles';
 const ContactUs = ({ navigation }) => {
 
   return (
-    <View style={styles.container}>
+    <FadeInView style={styles.container} navigation={navigation}>
       <Header navigation={navigation}/>
-      <Heading text='Contact Us' iconName='phone' iconType='feather' />
+      <Heading text='Contact Us' iconName='phone' iconType='feather' navigation={navigation}/>
       <ScrollView style={styles.scrollStyle}>
         <View style={{marginTop: 20, alignItems: 'center'}}>
-          <Text style={styles.title}>Business</Text>
-          <MyButton text='706-226-0186' onPress={() => openURL('tel:706-226-0186')} />
-          <Pressable
-            style={styles.itemContainer}
-            onPress={() => openURL('mailto:info@ais-ins.net')}
-          >
-            <Text style={styles.itemText}>Email</Text>
-          </Pressable>
+          <Text style={styles.title}>Office</Text>
+          <MyButton text='Call' onPress={() => openURL('tel:706-226-0186')} />
+          <Text style={styles.text}>706-226-0186</Text>
+          <MyButton text='Email' onPress={() => openURL('mailto:info@ais-ins.net')} />
+          <Text style={styles.text}>info@ais-ins.net</Text>
+          <MyButton text='After Hours' onPress={() => openURL('tel:706-450-6460')} />
+          <Text style={styles.text}>706-450-6460</Text>
         </View>
         {
           employees.map(employee => (
@@ -35,23 +35,15 @@ const ContactUs = ({ navigation }) => {
               <View style={styles.separator} />
               <Text style={styles.title}>{employee.name}</Text>
               <Text style={styles.text}>{employee.title}</Text>
-              <Pressable
-                style={styles.itemContainer}
-                onPress={openURL(employee.phone)}
-              >
-                <Text style={styles.itemText}>Call</Text>
-              </Pressable>
-              <Pressable
-                style={styles.itemContainer}
-                onPress={openURL(employee.phone)}
-              >
-                <Text style={styles.itemText}>Email</Text>
-              </Pressable>
+              <MyButton text='Call' onPress={() => openURL('tel:' + employee.phone)} />
+              <Text style={styles.text}>{employee.phone}</Text>
+              <MyButton text='Email' onPress={() => openURL('mailto:' + employee.email)} />
+              <Text style={styles.text}>{employee.email}</Text>
             </View>
           ))
         }
       </ScrollView>
-    </View>
+    </FadeInView>
   );
 }
 
@@ -89,7 +81,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     textAlign: 'center',
-    margin: 10,
+    margin: 15,
   },
 });
 

@@ -42,18 +42,21 @@ const CompanyList = ({ filteredCompanies, typeOfData, defaultTitle }) => {
     <View style={styles.container}>
       <ScrollView>
       {
-        alphabeticalCompanies.map(company => (
-          <CompanyCard 
-            key={company.name} 
-            company={company} 
-            data={company[typeOfData]}
-            defaultTitle={defaultTitle}
-            setOverlay={changeOverlay}
-          />
+        alphabeticalCompanies.map((company, index) => (
+          <View>
+            <CompanyCard 
+              key={company.name} 
+              company={company} 
+              data={company[typeOfData]}
+              defaultTitle={defaultTitle}
+              setOverlay={changeOverlay}
+            />
+            {index != alphabeticalCompanies.length - 1 && <View style={styles.separator} />}
+          </View>
         ))
       }
       </ScrollView>
-      <PopUp message={overlay.message} phone={overlay.phone} link={overlay.link} toggle={toggleOverlay} />
+      <PopUp message={overlay.message} phone={overlay.phone} link={overlay.link} toggle={toggleOverlay} visible={visible} />
     </View>
   );
 }
@@ -75,6 +78,12 @@ const styles = StyleSheet.create({
     padding: 20,
     fontWeight: 'bold',
     textAlign: 'center',
+  },
+  separator: {
+    margin: 30, 
+    backgroundColor: colors.darkGray, 
+    height: 1, 
+    width: '80%'
   },
 });
 
